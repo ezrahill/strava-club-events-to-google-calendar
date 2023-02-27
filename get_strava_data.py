@@ -28,7 +28,7 @@ def get_events(token):
 
     try:
         response = requests.get(
-            url=f"https://www.strava.com/api/v3/clubs/{secrets.club_name}/group_events",
+            url=f"https://www.strava.com/api/v3/clubs/{secrets.club_id}/group_events",
             headers={
                 "Authorization": f"Bearer {token}"
             },

@@ -1,15 +1,24 @@
 # Strava Club Events -> Google Calendar
+
 > Bring Strava Club Events to your personal Google Calendar
 
 In order to better keep track of Strava Club Events I thought a good solution was to add them to a Google Calendar.
 
+<img alt='Strava Club Event' src='./images/strava-events.png' width=640/>
+<img alt='Google Cal' src='./images/google-cal.png' width=640/>
+
 ## Requires
+
 - Google Credentials File
-    - credentials.json
-- Strava API Key
-- Secrets File
+  1. [Create Google Project](https://console.cloud.google.com/projectcreate)
+  2. [Configure OAuth Consent Screen](https://console.cloud.google.com/apis/credentials/consent)
+  3. [Create OAuth Client Cerdentails](https://console.cloud.google.com/apis/credentials/oauthclient)
+  4. Download file and rename `crendentials.json`
+- [Strava API Key](https://www.strava.com/settings/api)
+- Create `secrets.py` ile as per below and update the values to your own
 
 ### secrets.py
+
 ```python
 client_id = '12345'  # Strava User ID
 client_secret = '123456789'  # Strava API Secret
@@ -20,7 +29,14 @@ gc_id_prefix = 'cec'  # Google Calendar Entry ID Prefix
 calendar_name = 'Club Event Cal'  # Google Calendar Name
 ```
 
-## Example
+## Usage
+
+```
+$ python cal_update.py
+```
+
+## Example Output
+
 ```bash
 $ python cal_update.py
 Getting calendar list...

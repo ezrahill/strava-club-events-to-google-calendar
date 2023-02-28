@@ -1,6 +1,6 @@
-import requests
-
 import secrets
+
+import requests
 
 
 def renew_token():
@@ -14,13 +14,13 @@ def renew_token():
                 "client_secret": secrets.client_secret,
                 "refresh_token": secrets.refresh_token,
                 "grant_type": "refresh_token",
-            }
+            },
         )
-        print(f'Get Token - Response HTTP Status Code: {response.status_code}')
+        print(f"Get Token - Response HTTP Status Code: {response.status_code}")
 
-        return (response.json())['access_token']
+        return (response.json())["access_token"]
     except requests.exceptions.RequestException:
-        print('HTTP Request failed')
+        print("HTTP Request failed")
 
 
 def get_events(token):
@@ -29,16 +29,13 @@ def get_events(token):
     try:
         response = requests.get(
             url=f"https://www.strava.com/api/v3/clubs/{secrets.club_id}/group_events",
-            headers={
-                "Authorization": f"Bearer {token}"
-            },
+            headers={"Authorization": f"Bearer {token}"},
         )
-        print(
-            f'Get Events - Response HTTP Status Code: {response.status_code}')
+        print(f"Get Events - Response HTTP Status Code: {response.status_code}")
         events = response.json()
         return events
     except requests.exceptions.RequestException:
-        print('HTTP Request failed')
+        print("HTTP Request failed")
 
 
 def get_route_data(route_id, token):
@@ -47,11 +44,9 @@ def get_route_data(route_id, token):
     try:
         response = requests.get(
             url=f"https://www.strava.com/api/v3/routes/{route_id}",
-            headers={
-                "Authorization": f"Bearer {token}"
-            },
+            headers={"Authorization": f"Bearer {token}"},
         )
-        print(f'Get Route - Response HTTP Status Code: {response.status_code}')
+        print(f"Get Route - Response HTTP Status Code: {response.status_code}")
         return response.json()
     except requests.exceptions.RequestException:
-        print('HTTP Request failed')
+        print("HTTP Request failed")
